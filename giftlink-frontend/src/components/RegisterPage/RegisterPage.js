@@ -14,7 +14,7 @@ function RegisterPage() {
     // insert code here to create handleRegister function and include console.log
     const handleRegister = async (e) => {
         e.preventDefault();
-        console.log("Register invoked")
+        console.log("Register invoked for :"+firstName)
 
     }
 
@@ -28,7 +28,7 @@ function RegisterPage() {
                 {/* insert code here to create input elements for all the variables - firstName, lastName, email, password */}
                         <div className="mb-4">
 
-                            <label htmlFor="firstName" className="form label"> FirstName</label><br>
+                            <label htmlFor="firstName" className="form label"> FirstName</label><br/>
                             <input
                                 id="firstName"
                                 type="text"
@@ -49,7 +49,8 @@ function RegisterPage() {
                 </div>
             </div>
         </div>
-    )//end of return
+    )
+    {/* //end of return */}
 }
 
 export default RegisterPage;
