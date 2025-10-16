@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoginPage.css';
 import {urlConfig} from '../../config';
 import { useAppContext } from '../../context/AuthContext';
@@ -41,7 +41,7 @@ function LoginPage() {
       const json = await response.json();
       if (json.authtoken) {
           sessionStorage.setItem('auth-token', json.authtoken);
-          sessionStorage.setItem('name', firstName);
+          // sessionStorage.setItem('name', firstName);
           sessionStorage.setItem('email', json.email);
           //insert code for setting logged in state
           setIsLoggedIn(true);
