@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 14
 
+      - name: Update npm
+        run: npm install npm --global
+      
       - name: Install JSHint
         run: npm install jshint --global
 
@@ -49,5 +52,6 @@ jobs:
         run: |
           cd giftlink-frontend
           npm install
+          npm install npm
           npm run build
           echo "Client-side build successfully"
