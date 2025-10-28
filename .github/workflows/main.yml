@@ -18,17 +18,14 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 14
 
-      - name: Update npm
-        run: npm install npm --global
-      
       - name: Install JSHint
         run: npm install jshint --global
 
       - name: Run Linter
-      # This command finds all JavaScript files recursively and runs JSHint on them
         run: |
+         # This command finds all JavaScript files recursively and runs JSHint on them
           find ./giftlink-backend -name app.js -exec jshint {} +
           find ./giftlink-backend -name auth.js -exec jshint {} +
           find ./giftlink-backend -name giftRoutes.js -exec jshint {} +
@@ -46,12 +43,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 14
 
       - name: Run build
         run: |
           cd giftlink-frontend
-          npm install npm
-          npm install 
+          npm install
           npm run build
           echo "Client-side build successfully"
