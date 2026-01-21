@@ -34,6 +34,7 @@ async function loadData() {
             console.log('Inserted documents:', insertResult.insertedCount);
         } else {
             console.log("Gifts already exists in DB")
+            // console.log(`Total documents in collection: ${JSON.stringify(documents)}`);
         }
     } catch (err) {
         console.error(err);
