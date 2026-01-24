@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import {urlConfig} from '../../config';
+import { useAppContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom'; 
 
 import './RegisterPage.css';
 
@@ -10,15 +13,50 @@ function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');   
 
-    // insert code here to create handleRegister function and include console.log
-    const handleRegister = async () => {
-        console.log(`Registering user with details: 
-        First Name: ${firstName},   
-        Last Name: ${lastName},
-        Email: ${email},
-        Password: ${password}`);
+    //Do these tasks inside the RegisterPage function, after the useStates definition
+    //Task 4: Include a state for error message.
+    const [showerr, setShowerr] = useState(''); 
+    //Task 5: Create a local variable for `navigate`   and `setIsLoggedIn`.
+    const navigate = useNavigate();
+    const { setIsLoggedIn } = useAppContext();
+    
 
-    };
+    const handleRegister = async () => {
+        try{
+            const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
+                method: "POST",
+                //Task 7: Set headers
+                headers: {
+                    'content-type': 'application/json',
+                },
+                //Task 8: Set body to send user details
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                })
+            });
+
+            const json = await response.json();
+            if (json.authtoken) {
+                sessionStorage.setItem('auth-token', json.authtoken);
+                sessionStorage.setItem('name', firstName);
+                sessionStorage.setItem('email', json.email);
+                //insert code for setting logged in state
+                setIsLoggedIn(true)
+                //insert code for navigating to MainPAge
+                navigate('/app');
+            }
+            if (json.error) {
+                setShowerr(json.error);
+            }
+
+        }catch (e) {
+            console.log("Error fetching details: " + e.message);
+        }
+    }
+
 
     return (
         <div className="container mt-5">
@@ -26,6 +64,7 @@ function RegisterPage() {
                 <div className="col-md-6 col-lg-4">
                     <div className="register-card p-4 border rounded">
                         <h2 className="text-center mb-4 font-weight-bold">Register</h2>
+                        {showerr && <div className="text-danger" role="alert">{showerr}</div>}
 
                         {/* insert code here to create input elements for all the variables - firstName, lastName, email, password */}
                         <div className="mb-4">
