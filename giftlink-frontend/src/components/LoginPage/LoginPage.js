@@ -73,7 +73,6 @@ function LoginPage() {
           <div className="col-md-6 col-lg-4">
             <div className="login-card p-4 border rounded">
                 <h2 className="text-center mb-4 font-weight-bold">Login</h2>
-                <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
                 {/* insert code here to create input elements for the variables email and  password */}
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
@@ -98,6 +97,8 @@ function LoginPage() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+
+                <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
 
                 {/* insert code here to create a button that performs the `handleLogin` function on click */}
                 <button className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Login</button>
