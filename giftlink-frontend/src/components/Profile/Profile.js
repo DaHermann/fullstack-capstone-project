@@ -35,21 +35,21 @@ const Profile = () => {
                 setUserDetails(storedUserDetails);
                 setUpdatedDetails(storedUserDetails);
               }
-} catch (error) {
-  console.error(error);
-  // Handle error case
-}
-};
+    } catch (error) {
+      console.error(error);
+      // Handle error case
+    }
+  };
 
-const handleEdit = () => {
-setEditMode(true);
-};
+  const handleEdit = () => {
+  setEditMode(true);
+  };
 
-const handleInputChange = (e) => {
-setUpdatedDetails({
-  ...updatedDetails,
-  [e.target.name]: e.target.value,
-});
+  const handleInputChange = (e) => {
+  setUpdatedDetails({
+    ...updatedDetails,
+    [e.target.name]: e.target.value,
+  });
 };
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -66,13 +66,21 @@ const handleSubmit = async (e) => {
     const payload = { ...updatedDetails };
     const response = await fetch(`${urlConfig.backendUrl}/api/auth/update`, {
       //Step 1: Task 1
+      method: "PUT",
       //Step 1: Task 2
+      headers: {
+        "Authorization": `Bearer ${authtoken}`,
+        "Content-Type": "application/json",
+        "Email": email,
+      },
       //Step 1: Task 3
+      body: JSON.stringify(payload)
     });
 
     if (response.ok) {
       // Update the user details in session storage
       //Step 1: Task 4
+      setUserName(updatedDetails.name);
       //Step 1: Task 5
       setUserDetails(updatedDetails);
       setEditMode(false);
