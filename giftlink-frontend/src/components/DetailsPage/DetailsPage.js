@@ -14,6 +14,7 @@ function DetailsPage() {
         const authenticationToken = sessionStorage.getItem('auth-token');
         if (!authenticationToken) {
             // Task 1: Check for authentication and redirect
+            console.log('No auth token, redirecting to login');
             navigate('/app/login');
         }
 
