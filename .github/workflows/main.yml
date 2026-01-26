@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'npm'
@@ -27,7 +27,7 @@ jobs:
 
       - name: Run JSHint
         working-directory: giftlink-backend
-        run: npx jshint "*.js"
+        run: npx jshint *.js
 
   client_build:
     name: Build Frontend
@@ -35,10 +35,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'npm'
