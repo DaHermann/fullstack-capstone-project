@@ -33,5 +33,14 @@
     "nodemon": "^3.0.2",
     "sinon": "^17.0.1",
     "supertest": "^6.3.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6
+    }
   }
 }
