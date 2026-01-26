@@ -24,7 +24,7 @@ connectToDatabase().then(() => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
-}))
+}));
 
 // Route files
 // Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
@@ -60,8 +60,8 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/",(req,res)=>{
-    res.send("Inside the server")
-})
+    res.send("Inside the server");
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

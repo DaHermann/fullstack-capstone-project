@@ -1,6 +1,6 @@
-const pino = require('pino');
+var pino = require('pino');
 
-let logger;
+var logger;
 
 if (process.env.NODE_ENV !== 'production') {
     // In non-production environments, log to the console
