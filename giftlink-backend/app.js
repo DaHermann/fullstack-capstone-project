@@ -5,7 +5,7 @@ const pinoLogger = require('./logger');
 const bodyParser = require('body-parser');
 
 const connectToDatabase = require('./models/db');
-const {loadData} = require("./util/import-mongo/index");
+// const {loadData} = require("./util/import-mongo/index");
 
 
 const app = express();
@@ -53,7 +53,7 @@ app.use('/api/auth', authRoutes);
 
 
 // Global Error Handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err);
     res.status(500).send('Internal Server Error');
 });
