@@ -1,3 +1,5 @@
+/* eslint-env es6, node */
+
 //Step 1 - Task 2: Import necessary packages
 const express = require('express');
 const app = express();

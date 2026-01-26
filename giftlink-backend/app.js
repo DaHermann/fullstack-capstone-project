@@ -1,4 +1,5 @@
 /*jshint esversion: 8 */
+/* eslint-env es6, node */
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
