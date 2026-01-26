@@ -27,7 +27,7 @@ jobs:
 
       - name: Run JSHint
         working-directory: giftlink-backend
-        run: npx jshint *.js
+        run: npx jshint "*.js"
 
   client_build:
     name: Build Frontend
