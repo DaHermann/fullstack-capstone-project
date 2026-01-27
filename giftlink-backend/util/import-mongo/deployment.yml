@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongoimport
+  labels:
+    app: mongoimport
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongoimport
+  template:
+    metadata:
+      labels:
+        app: mongoimport
+    spec:
+      containers:
+      - name: mongo-importation-container
+        image: us.icr.io/sn-labs-ndanielherma/mongoimport
+        ports:
+        - containerPort: 3001
+      imagePullSecrets:
+      - name: icr
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoimport-service
+spec:
+  type: NodePort
+  ports:
+  - port: 8081
+    targetPort: 3001
+    protocol: TCP
+  selector:
+    app: mongoimport
